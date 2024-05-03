@@ -22,7 +22,7 @@ certificatesResolvers:
   letsencrypt:
     # https://doc.traefik.io/traefik/https/acme/#lets-encrypt
     acme:
-      email: "namritha2003@gmail.com"
+      email: "210675@tkmce.ac.in"
       storage: /etc/traefik/acme/acme.json
       # https://doc.traefik.io/traefik/https/acme/#httpchallenge
       httpChallenge:
@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`tinkercade.hestiatkmce.in`) || Host(`www.tinkercade.hestiatkmce.in`)"
+      rule: "Host(`tinkercade.hestiatkmce.in`)"
       entryPoints:
         - web-secure
       middlewares:
