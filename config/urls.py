@@ -23,7 +23,7 @@ urlpatterns = [
     path("users/", include("tinkerhub_tinkercade.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    # ...
+    
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
@@ -35,6 +35,7 @@ urlpatterns += [
     # DRF auth token
     path("api/auth-token/", obtain_auth_token),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
+    path("api/games/", include("tinkerhub_tinkercade.games.urls", namespace="games")),
     path(
         "api/docs/",
         SpectacularSwaggerView.as_view(url_name="api-schema"),

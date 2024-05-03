@@ -11,6 +11,9 @@ if typing.TYPE_CHECKING:
     from django.http import HttpRequest
 
     from tinkerhub_tinkercade.users.models import User
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class AccountAdapter(DefaultAccountAdapter):
@@ -46,3 +49,13 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
                 if last_name := data.get("last_name"):
                     user.name += f" {last_name}"
         return user
+    def pre_social_login(self, request, sociallogin):
+        if sociallogin.is_existing:
+            return
+        if "email" not in sociallogin.account.extra_data:
+            return
+        try:
+            user = User.objects.get(email=sociallogin.account.extra_data["email"])
+            sociallogin.connect(request, user)
+        except User.DoesNotExist:
+            pass
