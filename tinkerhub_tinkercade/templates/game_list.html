@@ -1,0 +1,63 @@
+<!-- templates/game_list.html -->
+{% extends 'main_page.html' %}
+
+{% block content %}
+<style>
+    /* Custom CSS styles for game list page */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f0f0; /* Light gray background color */
+        border-radius: 10px;
+    }
+    h1 {
+        text-align: center;
+        color: #333; /* Dark gray text color */
+    }
+    .game-item {
+        background-color: #fff; /* White background color */
+        border: 1px solid #ddd; /* Light gray border */
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .game-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .level {
+        font-size: 1.2em; /* Larger font size */
+        font-weight: bold;
+        color: #333; /* Dark gray text color */
+    }
+    .game-name {
+        font-size: 1.2em; /* Larger font size */
+        font-weight: bold;
+        color: #007bff; /* Blue text color */
+        font-family: 'Arial', sans-serif; /* Beautiful font for game name */
+    }
+    .points {
+        font-size: 1.2em; /* Larger font size */
+        font-weight: bold;
+        color: #28a745; /* Green text color */
+    }
+</style>
+
+<div class="container">
+    <h1>Games @ Arcade</h1>
+    {% for game in games %}
+    <div class="game-item">
+        <div class="game-info">
+            <div class="level">Level: {{ game.level }}</div>
+            <div class="game-name">
+                <a href="{% url 'games:game_detail' game.slug %}">{{ game.name }}</a>
+            </div>
+            <div class="points">Points : {{ game.points }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

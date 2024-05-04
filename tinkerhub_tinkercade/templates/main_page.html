@@ -1,0 +1,55 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TinkerCade : The Tech ARCADE{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffe600; /* Bright yellow background color */
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        header {
+            background-color: #4b2b00; /* Light brown header color */
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            color: #fff; /* Title color */
+        }
+        .options {
+            display: flex;
+            justify-content: space-around;
+        }
+        .option {
+            padding: 15px 30px; /* Increased padding for larger options */
+            background-color: rgba(234, 231, 231, 0.5);
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+            transition: background-color 0.3s;
+            font-size: 18px; /* Increased font size */
+        }
+        .option:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TinkerCade : The Tech ARCADE</h1>
+        <div class="options">
+            <a href="{% url 'games:user-rank' %}" class="option">Leaderboard</a>
+            <a href="{% url 'games:game_list' %}" class="option">Games List</a>
+        </div>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

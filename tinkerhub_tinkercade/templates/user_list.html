@@ -1,0 +1,48 @@
+<!-- user_list.html -->
+{% extends 'main_page.html' %}
+
+{% block content %}
+<style>
+    /* Your CSS styles */
+    h1{
+        color: #333;
+        align-self: center;
+    }
+    .user-list {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa; /* Light gray background color */
+    }
+    .user-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 15px;
+        background-color: #fff; /* White background color */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .user-box:hover {
+        background-color: #f0f0f0; /* Light gray background color on hover */
+    }
+    .username {
+        font-weight: bold;
+        color: #333; /* Dark gray text color */
+    }
+    .user-points {
+        color: #28a745; /* Green text color for points */
+    }
+</style>
+
+<div class="user-list">
+    <h1>Leaderboard</h1>
+    {% for user in users %}
+        <div class="user-box">
+            <span class="username">{{ user.username }}</span>
+            <span class="user-points">{{ user.points }}</span>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
