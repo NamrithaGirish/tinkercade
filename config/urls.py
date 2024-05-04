@@ -35,7 +35,7 @@ urlpatterns += [
     # DRF auth token
     path("api/auth-token/", obtain_auth_token),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
-    path("api/games/", include("tinkerhub_tinkercade.games.urls", namespace="games")),
+    path("tinkercade/", include("tinkerhub_tinkercade.games.urls", namespace="games")),
     path(
         "api/docs/",
         SpectacularSwaggerView.as_view(url_name="api-schema"),

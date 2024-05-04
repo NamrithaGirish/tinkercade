@@ -17,6 +17,18 @@ class UserAdminCreationForm(admin_forms.UserCreationForm):
     Form for User Creation in the Admin Area.
     To change user signup, see UserSignupForm and UserSocialSignupForm.
     """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password1'].required = False  # Make password1 field not required
+        self.fields['password2'].required = False 
+
+    def save(self, commit=True):
+        # Override save method to create user without setting passwords
+        user = super().save(commit=False)
+        user.set_unusable_password()  # Set unusable password
+        if commit:
+            user.save()
+        return user
 
     class Meta(admin_forms.UserCreationForm.Meta):
         model = User
