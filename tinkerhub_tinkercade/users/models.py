@@ -28,6 +28,7 @@ class User(AbstractUser):
         choices=UserType.choices,
         default=UserType.PARTICIPANTS,
     )
+    phone = IntegerField(default=0)
     def get_absolute_url(self) -> str:
         """Get URL for user's detail view.
 

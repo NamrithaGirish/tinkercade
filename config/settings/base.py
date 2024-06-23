@@ -344,7 +344,7 @@ SPECTACULAR_SETTINGS = {
 # ------------------------------------------------------------------------------
 
 CORS_ORIGIN_ALLOW_ALL = True
-
+CSRF_TRUSTED_ORIGINS = ['https://7c11-2402-3a80-4479-42ce-8c77-6ef3-4ac7-66b5.ngrok-free.app']
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

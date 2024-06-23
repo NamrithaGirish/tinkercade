@@ -11,7 +11,7 @@ from drf_spectacular.views import SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path("hello/", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/",
         TemplateView.as_view(template_name="pages/about.html"),
@@ -35,7 +35,7 @@ urlpatterns += [
     # DRF auth token
     path("api/auth-token/", obtain_auth_token),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
-    path("tinkercade/", include("tinkerhub_tinkercade.games.urls", namespace="games")),
+    path("", include("tinkerhub_tinkercade.games.urls", namespace="games")),
     path(
         "api/docs/",
         SpectacularSwaggerView.as_view(url_name="api-schema"),

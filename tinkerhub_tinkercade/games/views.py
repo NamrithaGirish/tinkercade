@@ -71,8 +71,10 @@ def user_list(request):
     return render(request, 'user_list.html', {'users': users})
 
 def game_list(request):
-    games = Games.objects.all()
-    return render(request, 'game_list.html', {'games': games})
+    games = Games.objects.order_by("level")
+    resp = render(request, 'game_list.html', {'games': games})
+    resp["ngrok-skip-browser-warning"]=False
+    return resp
 
 def game_detail(request, slug):
     game = Games.objects.get(slug=slug)

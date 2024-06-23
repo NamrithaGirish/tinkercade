@@ -7,14 +7,14 @@ from .base import env
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True
+DEBUG = False
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
     default="B6tUyAsCovvZBSUh63MJJfQrS8OC5zgIwwqf7a7b1K0KZWtqfvUZHFh9T3cWQxyB",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]  # noqa: S104
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1","7c11-2402-3a80-4479-42ce-8c77-6ef3-4ac7-66b5.ngrok-free.app"]  # noqa: S104
 
 # CACHES
 # ------------------------------------------------------------------------------
