@@ -12,11 +12,7 @@ services:
       dockerfile: ./compose/production/django/Dockerfile
 
     image: tinkerhub_tinkercade_production_django
-    deploy:
-      resources:
-        limits:
-          cpus: "0.25"
-          memory: 1G
+
     depends_on:
       - postgres
       # - redis
@@ -30,11 +26,7 @@ services:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
     image: tinkerhub_tinkercade_production_postgres
-    deploy:
-      resources:
-        limits:
-          cpus: "0.25"
-          memory: 0.5G
+
     volumes:
       - production_postgres_data:/var/lib/postgresql/data
       - production_postgres_data_backups:/backups
@@ -46,11 +38,7 @@ services:
       context: .
       dockerfile: ./compose/production/traefik/Dockerfile
     image: tinkerhub_tinkercade_production_traefik
-    deploy:
-      resources:
-        limits:
-          cpus: "0.25"
-          memory: 256M
+
     depends_on:
       - django
     volumes:
@@ -86,8 +74,3 @@ services:
       - ./.envs/.production/.django
     volumes:
       - production_postgres_data_backups:/backups:z
-    deploy:
-      resources:
-        limits:
-          cpus: "0.25"
-          memory: 100M
